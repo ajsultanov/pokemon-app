@@ -17,11 +17,13 @@ const Card = (props) => {
                         src={props.sprites.other["official-artwork"].front_default} 
                         alt="pokemon portrait"
                         className="portrait"
-                        style={{maxWidth: 25 + '%'}}
+                        style={{maxWidth: 50 + '%'}}
                     />
                 </div>
-                <h1>#{leadZeros(props.order)} {props.name[0].toUpperCase() + props.name.slice(1)}</h1>
-                <h3 className='types'>{typeNames(props) ? typeNames(props).join(' • ').toUpperCase() : undefined}</h3>  
+                <div className="cardInfo">
+                    <h2>#{leadZeros(props.order)} {props.name[0].toUpperCase() + props.name.slice(1)}</h2>
+                    <h3 className='types'>{typeNames(props) ? typeNames(props).join(' • ') : undefined}</h3>  
+                </div>
             </div>
         </Link>
     )

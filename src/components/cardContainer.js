@@ -3,10 +3,11 @@ import Card from './Card.js';
 
 const CardContainer = (props) => {
     const [pokemon, setPokemon] = useState([])
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
+    const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset='
+    let offset = 0
 
     useEffect(() => {
-        fetch(url)
+        fetch(url + offset.toString())
             .then(resp => resp.json())
             .then(json => {
                 console.log(json)
@@ -25,7 +26,7 @@ const CardContainer = (props) => {
     }, [])
     
     return (
-        <div>
+        <div className="CardContainer">
             {
                 pokemon.map(mon => {
                     console.log(pokemon.length)

@@ -14,7 +14,7 @@ export const capitalize = name => {
 }
 
 export const typeNames = (props) => {
-    if (props?.types) return props.types.map(el => el.type.name)
+    if (props?.types) return props.types.map(el => capitalize(el.type.name))
     return undefined
 }
 
@@ -26,7 +26,7 @@ export const typeColor = props => {
             case 'fire':
                 return '#f6a26d';
             case 'bug':
-                return '#cdb047';
+                return '#d2b85b';
             case 'water':
                 return '#70b8fe';
             case 'normal':
