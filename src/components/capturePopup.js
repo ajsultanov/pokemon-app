@@ -5,8 +5,17 @@ const CapturePopup = (props) => {
     const [captureDate, setCaptureDate] = useState(null)
     const [captureLevel, setCaptureLevel] = useState(null)
 
+    console.log(props)
+
     const handleSubmit = () => {
+        // if at least date and level are present...
         // pull from state, set localstorage
+        localStorage.setItem('key', {
+            id: props.id,
+            nickname: nickname,
+            captureDate: captureDate,
+            captureLevel: captureLevel
+        })
     }
 
     const handleChange = () => {

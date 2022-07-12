@@ -1,12 +1,16 @@
 import React, { useState, useEffect }  from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+import { leadZeros, capitalize, typeNames } from "../utils.js";
 
-const DetailPage = (props) => {
-    const url = 'https://pokeapi.co/api/v2/pokemon/'
-    let { id } = useParams();
-    console.log(id)
+
+const DetailPage = () => {
+    const location = useLocation()
+    const { color, types } = location.state
+    const { id } = useParams();
     const [pokemon, setPokemon] = useState(null);
     const [captured, setCaptured] = useState(false);
+    const [captureDetails, setCaptureDetails] = useState({})
+    const url = 'https://pokeapi.co/api/v2/pokemon/'
 
     useEffect(() => {
         fetch(url + id)
@@ -15,34 +19,29 @@ const DetailPage = (props) => {
     }, [id])
 
     const alreadyCaptured = () => {
-        // maybe make an iife
+        console.log(captured)
+        // maybe make an iife or put in useeffect
         // check localstorage, set captured to true
-    }
-
-    const capitalize = name => {
-        if (name) return name[0].toUpperCase() + name.slice(1);
-        return undefined
-    }
-    const typeNames = () => {
-        if (pokemon?.types) return pokemon.types.map(el => el.type.name)
-        return undefined
+        // setCaptureDetails with localstorage items
     }
 
     return (
-        <div className="Details">
-            <img 
-                src={pokemon?.sprites?.other["official-artwork"].front_default}
-                style={{maxWidth: 250 + 'px'}}
-                alt={pokemon?.name + 'portrait'}
-            />
-            <h1>{capitalize(pokemon?.name)}</h1>
-            <div>
+        <div className="DetailPage">
+            <div className="detailHeader" style={{backgroundColor: color}}>
+                <img 
+                    src={pokemon?.sprites?.other["official-artwork"].front_default}
+                    style={{maxWidth: 250 + 'px'}}
+                    alt={pokemon?.name + 'portrait'}
+                />
+                <h1>#{leadZeros(pokemon?.order)} {capitalize(pokemon?.name)}</h1>
+            </div>
+            <div className="aboutSection">
                 <h3>About</h3>
                 <p>Height: {pokemon?.height} ft</p>
                 <p>Weight: {pokemon?.weight} lbs</p>
-                <p>Type(s): {typeNames() ? typeNames().join(', ') : undefined}</p> 
+                <p>Type(s): {types ? types.join(' • ') : undefined}</p> 
             </div>
-            <div>
+            <div className="aboutSection">
                 <h3>Base Stats</h3>
                 <p>HP: {pokemon?.stats[0].base_stat}</p>
                 <p>ATT: {pokemon?.stats[1].base_stat}</p>
@@ -53,21 +52,26 @@ const DetailPage = (props) => {
             </div>
             {!captured ?
                 <div>
-                    <button className="CaptureButton">
+                    <button className="captureButton">
                         Capture! 
                         {
-                            //(open modal)
+                            // open capturepopup modal
+                            // send id as prop!
                         }
                     </button>
                 </div>
             :
                 <div>
                     <h3>Capture Info</h3>
-                    <p>Nickname</p>
-                    <p>Captured Date</p>
-                    <p>Captured Level</p>
+                    {
+                        localStorage.getItem('key') ?
+                            <p>Nickname: {captureDetails?.nickname}</p>
+                        :
+                            null
+                    }
+                    <p>Captured Date: {captureDetails?.captureDate}</p>
+                    <p>Captured Level: {captureDetails?.captureLevel}</p>
                 </div>
-            // these need to be from localstorage
             }
         </div>
     )

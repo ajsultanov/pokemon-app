@@ -6,19 +6,19 @@ const pokeball =  require('../assets/pokeball.png')
 const Header = (props) => {
 
     return (
-        <div>
+        <div className="Header">
             <Link to="/">
                 <img src={pokédexLogo}
                     className="pokedexLogo"
                     alt="Pokedex logo"
                 />
             </Link>
-            <Link to="captured">
+            <Link to="captured" className="capturedLink">
                 <img src={pokeball}
                     className="pokeballLogo"
                     alt="Pokeball"
                 />
-                Captured Pokemon
+                Captured Pokémon
             </Link>
         </div>
     )
