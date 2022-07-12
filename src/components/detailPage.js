@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import { useParams, useLocation } from "react-router-dom";
-import { leadZeros, capitalize, typeNames } from "../utils.js";
+import { leadZeros, capitalize } from "../utils.js";
+import CapturePopup from './CapturePopup.js';
 
 
 const DetailPage = () => {
@@ -23,6 +24,10 @@ const DetailPage = () => {
         // maybe make an iife or put in useeffect
         // check localstorage, set captured to true
         // setCaptureDetails with localstorage items
+    }
+
+    const handleClick = () => {
+
     }
 
     return (
@@ -52,16 +57,10 @@ const DetailPage = () => {
             </div>
             {!captured ?
                 <div>
-                    <button className="captureButton">
-                        Capture! 
-                        {
-                            // open capturepopup modal
-                            // send id as prop!
-                        }
-                    </button>
+                    <CapturePopup />
                 </div>
             :
-                <div>
+                <div className='aboutSection'>
                     <h3>Capture Info</h3>
                     {
                         localStorage.getItem('key') ?

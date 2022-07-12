@@ -23,7 +23,7 @@ const CardContainer = (props) => {
             })
 
         return () => {}
-    }, [])
+    }, [offset])
     
     return (
         <div className="CardContainer">
@@ -31,8 +31,8 @@ const CardContainer = (props) => {
                 pokemon.map(mon => {
                     console.log(pokemon.length)
                     return <Card 
-                        key={mon.id} 
-                        {...mon}
+                    key={mon.id} 
+                    {...mon}
                     />
                 })
             }
