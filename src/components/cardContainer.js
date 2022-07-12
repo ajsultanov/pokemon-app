@@ -1,9 +1,41 @@
-import React  from 'react';
+import React, { useState, useEffect } from 'react';
+import Card from './Card.js';
 
 const CardContainer = (props) => {
+    const [pokemon, setPokemon] = useState([])
+    const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
 
+    useEffect(() => {
+        fetch(url)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json)
+                return Promise.all(json.results.map(item => fetch(item.url)))
+            })
+            .then(resp => {
+                return Promise.all(resp.map(x => x.json()))
+            })
+            .then(data => {
+                data.forEach(poke => {
+                    setPokemon(pokemon => [...pokemon, poke])
+                })
+            })
+
+        return () => {}
+    }, [])
+    
     return (
-        <div><h1>Card Container!</h1></div>
+        <div>
+            {
+                pokemon.map(mon => {
+                    console.log(pokemon.length)
+                    return <Card 
+                        key={mon.id} 
+                        {...mon}
+                    />
+                })
+            }
+        </div>
     )
 }
 

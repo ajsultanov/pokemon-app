@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import Card from './components/card.js'
+import { Routes, Route } from "react-router-dom";
+import Header from './components/Header.js'
+import CardContainer from './components/CardContainer.js'
+import CapturedCardContainer from './components/CapturedCardContainer.js'
+import DetailPage from './components/DetailPage'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Card />
+      <Header />
+      <Routes>
+        <Route path="/" element={<CardContainer />} />
+        <Route path="captured" element={<CapturedCardContainer />} />
+        <Route path="pokemon/:id" element={<DetailPage />} />
+      </Routes>
     </div>
   );
 }
