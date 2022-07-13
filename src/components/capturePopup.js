@@ -34,7 +34,12 @@ const CapturePopup = () => {
 
     return (
         <div>
-            <button onClick={() => setModalOpen(true)}>Open Modal</button>
+            <button 
+                onClick={() => setModalOpen(true)}
+                className="captureOpenButton"
+            >
+                Capture
+            </button>
             <Modal 
                 // className='CapturePopup'
                 isOpen={modalOpen}
@@ -52,14 +57,25 @@ const CapturePopup = () => {
                 closeTimeoutMS={100}
             >
                 <form onChange={handleChange}>
-                    <label for="nickname">Nickname</label>
-                    <input id="nickname" placeholder="nickname"/>
-                    <label for="date">Today's Date</label>
-                    <input id="date" value={getDate()} disabled/>
-                    <label for="level">Level when captured</label>
-                    <input id="level" type="number" min="1" max="100" placeholder="5"/>
+                    <div>
+                        <label for="nickname">Nickname</label>
+                        <input id="nickname" placeholder="nickname"/>
+                    </div>
+                    <div>
+                        <label for="date">Today's Date</label>
+                        <input id="date" value={getDate()} disabled/>
+                    </div>
+                    <div>
+                        <label for="level">Level when captured</label>
+                        <input id="level" type="number" min="1" max="100" placeholder="5"/>
+                    </div>
                 </form>
-                <button onClick={handleSubmit}>Capture</button>
+                <button 
+                    onClick={handleSubmit}
+                    className="captureOpenButton"
+                >
+                    Capture
+                </button>
             </Modal>
         </div>
     )

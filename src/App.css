@@ -125,6 +125,16 @@ h4 {
   background-color: red;
 }
 
+.captureOpenButton {
+  background-color: orangered;
+  width: 50%;
+  padding: 10px 5px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 25px;
+}
+
 .overlay-base {
   padding: 1rem;
   position: fixed;
@@ -149,16 +159,27 @@ h4 {
   outline: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .content-base form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.content-base form input {
+  width: 90%;
+  line-height: 1.5rem;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+.content-base form label {
+  color: #333;
 }
 .content-after {
-  width: 70%;
+  width: 30%;
   height: 40%;
-  background-color: #f8f8f8;
+  background-color: #f0f0f0;
   border-radius: 20px;
 }
