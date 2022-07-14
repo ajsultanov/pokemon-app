@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import CapturedCard from './CapturedCard.js'
 
 const CapturedCardContainer = (props) => {
-    console.log(props)
+    // console.log(props)
     const [capturedPokemon, setCapturedPokemon] = useState([])
     const [pokemon, setPokemon] = useState([])
     const url = 'https://pokeapi.co/api/v2/pokemon/'
@@ -15,6 +15,7 @@ const CapturedCardContainer = (props) => {
                     setPokemon(pokemon => [...pokemon, poke])
                 })
         })
+        return () => {}
     }, [])
 
     const anyCaptured = () => {
@@ -35,26 +36,27 @@ const CapturedCardContainer = (props) => {
         <div className='CapturedCardContainer'>
             {anyCaptured() ? 
                 <div>
-                    <table className='capturedCardTable'>
-
+                    <table>
                         <thead className='capturedListHeader'>
                             <tr>
-                                <th scope="col">POKEMON</th>
+                                <th scope="col" >POKEMON</th>
                                 <th scope="col">NICKNAME</th>
                                 <th scope="col">CAPTURED AT</th>
-                                <th scope="col">CAPTURED LEVEL</th>
+                                <th scope="col" className='capturedLevelCell'>CAPTURED LEVEL</th>
                             </tr>
                         </thead>
-                        {capturedPokemon.map(mon => {
-                            console.log(mon)
-                            return <CapturedCard 
-                                key={mon.id} 
-                                nickname={mon.nickname}
-                                captureDate={mon.captureDate}
-                                captureLevel={mon.captureLevel}
-                                {...pokemon[mon.id]}
-                            />
-                        })}
+                        <tbody>
+                            {capturedPokemon.map(mon => {
+                                console.log(mon, pokemon[mon.id])
+                                return <CapturedCard 
+                                    key={mon.id} 
+                                    nickname={mon.nickname}
+                                    captureDate={mon.captureDate}
+                                    captureLevel={mon.captureLevel}
+                                    {...pokemon[mon.id]}
+                                />
+                            })}
+                        </tbody>
                     </table>
                 </div>
             :

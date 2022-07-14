@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Link } from "react-router-dom";
-import { leadZeros, typeNames, typeColor, baseColor } from "../utils.js";
+import { leadZeros, capitalize, typeNames, typeColor, baseColor } from "../utils.js";
 
 const Card = (props) => {
     // console.log(props)
@@ -25,7 +25,7 @@ const Card = (props) => {
                     />
                 </div>
                 <div className="cardInfo">
-                    <h2>#{leadZeros(props.order)} {props.name[0].toUpperCase() + props.name.slice(1)}</h2>
+                    <h2>#{leadZeros(props.order)} {capitalize(props.name)}</h2>
                     <h3 className='types'>{typeNames(props) ? typeNames(props).join(' • ') : undefined}</h3>  
                 </div>
             </div>
