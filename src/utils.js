@@ -31,8 +31,56 @@ export const typeColor = props => {
                 return '#70b8fe';
             case 'normal':
                 return '#c6c6b9';
+            case 'poison':
+                return '#ba91b2';
+            case 'electric':
+                return '#f0db75';
+            case 'ground':
+                return '#d6be8f';
+            case 'fairy':
+                return '#f2caf2';
+            case 'fighting':
+                return '#aa776e';
+            case 'psychic':
+                return '#f6acca';
+            case 'ghost':
+                return '#ababd9';
             default:
-                return '#555555';
+                return '#cccccc';
+        }
+    }
+    return undefined
+}
+
+export const baseColor = props => {
+    if (props?.types) {
+        switch (props.types[0].type.name) {
+            case 'grass':
+                return '#76cc55';
+            case 'fire':
+                return '#eb5435';
+            case 'bug':
+                return '#a9bb22';
+            case 'water':
+                return '#3399fe';
+            case 'normal':
+                return '#aaaa9b';
+            case 'poison':
+                return '#aa5599';
+            case 'electric':
+                return '#ffcc33';
+            case 'ground':
+                return '#ddbb54';
+            case 'fairy':
+                return '#ee99ee';
+            case 'fighting':
+                return '#ba5544';
+            case 'psychic':
+                return '#ff5599';
+            case 'ghost':
+                return '#6666ba';
+            default:
+                return '#aaaaaa';
         }
     }
     return undefined

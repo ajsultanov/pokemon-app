@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import { useParams, useLocation } from "react-router-dom";
-import { leadZeros, capitalize } from "../utils.js";
+import { leadZeros, capitalize, baseColor } from "../utils.js";
 import CapturePopup from './CapturePopup.js';
 
 
@@ -9,8 +9,7 @@ const DetailPage = () => {
     const { color, types } = location.state
     const { id } = useParams();
     const [pokemon, setPokemon] = useState(null);
-    const [captured, setCaptured] = useState(false);
-    const [captureDetails, setCaptureDetails] = useState({})
+    const [captureDetails, setCaptureDetails] = useState(null)
     const url = 'https://pokeapi.co/api/v2/pokemon/'
 
     useEffect(() => {
@@ -19,20 +18,26 @@ const DetailPage = () => {
             .then(json => setPokemon(json))
     }, [id])
 
-    const alreadyCaptured = () => {
-        console.log(captured)
-        // maybe make an iife or put in useeffect
-        // check localstorage, set captured to true
-        // setCaptureDetails with localstorage items
-    }
-
-    const handleClick = () => {
-
+    const captured = (id) => {
+        const stored = JSON.parse(localStorage.getItem(id))
+        if (stored !== null && captureDetails === null) {
+            setCaptureDetails(stored)
+            return true
+        } else if (captureDetails !== null) {
+            console.log(captureDetails)
+            return true
+        }
+        return false
     }
 
     return (
         <div className="DetailPage">
-            <div className="detailHeader" style={{backgroundColor: color}}>
+            <div 
+                className="detailHeader" 
+                style={{
+                    backgroundColor: baseColor(types[0]), 
+                    background: 'repeating-linear-gradient(125deg,' + color + ', ' + color  + ' 10px, ' + color  + 'd0 10px, ' + color  + 'd0 20px)',
+            }}>
                 <img 
                     src={pokemon?.sprites?.other["official-artwork"].front_default}
                     style={{maxWidth: 250 + 'px'}}
@@ -42,8 +47,8 @@ const DetailPage = () => {
             </div>
             <div className="aboutSection">
                 <h3>About</h3>
-                <p>Height: {pokemon?.height} ft</p>
-                <p>Weight: {pokemon?.weight} lbs</p>
+                <p>Height: {pokemon?.height}ft</p>
+                <p>Weight: {pokemon?.weight}lbs</p>
                 <p>Type(s): {types ? types.join(' • ') : undefined}</p> 
             </div>
             <div className="aboutSection">
@@ -55,18 +60,18 @@ const DetailPage = () => {
                 <p>SP DEF: {pokemon?.stats[4].base_stat}</p>
                 <p>SPD: {pokemon?.stats[5].base_stat}</p>
             </div>
-            {!captured ?
+            {!captured(id) ?
                 <div>
-                    <CapturePopup />
+                    <CapturePopup id={id} name={pokemon?.name}/>
                 </div>
             :
                 <div className='aboutSection'>
                     <h3>Capture Info</h3>
                     {
-                        localStorage.getItem('key') ?
-                            <p>Nickname: {captureDetails?.nickname}</p>
+                        captureDetails?.nickname ?
+                            <p>Nickname: {captureDetails.nickname}</p>
                         :
-                            null
+                            console.log("no nickname")
                     }
                     <p>Captured Date: {captureDetails?.captureDate}</p>
                     <p>Captured Level: {captureDetails?.captureLevel}</p>

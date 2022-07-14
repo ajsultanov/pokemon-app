@@ -1,35 +1,39 @@
 import React, { useState }  from 'react';
+import { capitalize } from "../utils.js";
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root")
 
-const CapturePopup = () => {
+const CapturePopup = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [nickname, setNickname] = useState(null)
-    const [captureDate, setCaptureDate] = useState(null)
+    const today = new Date()
+    const captureDate = today.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric" }) 
     const [captureLevel, setCaptureLevel] = useState(null)
 
     const handleSubmit = () => {
         setModalOpen(false)
-        setCaptureDate(new Date())
-        // if at least date and level are present...
-        // pull from state, set localstorage
-        localStorage.setItem('key', {
-            nickname: nickname,
-            captureDate: captureDate,
-            captureLevel: captureLevel
-        })
+        if (captureLevel !== null) {
+            localStorage.setItem(props.id, JSON.stringify({
+                nickname: nickname,
+                captureDate: captureDate,
+                captureLevel: captureLevel
+            }))
+            window?.location.reload()
+        }
     }
 
-    const handleChange = () => {
-        // monitor form for change
-        // update state
-        console.log("a change was made!")
+    const handleChange = (e) => {
+        if (e.target.id === 'nickname') {
+            setNickname(e.target.value)
+        } else if (e.target.id === 'level') {
+            setCaptureLevel(e.target.value)
+        }
     }
 
     const getDate = () => {
         const d = new Date()
-        return d.toDateString()
+        return d.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric" }) 
     }
 
     return (
@@ -56,20 +60,35 @@ const CapturePopup = () => {
                 }}
                 closeTimeoutMS={100}
             >
-                <form onChange={handleChange}>
-                    <div>
-                        <label for="nickname">Nickname</label>
-                        <input id="nickname" placeholder="nickname"/>
-                    </div>
-                    <div>
-                        <label for="date">Today's Date</label>
-                        <input id="date" value={getDate()} disabled/>
-                    </div>
-                    <div>
-                        <label for="level">Level when captured</label>
-                        <input id="level" type="number" min="1" max="100" placeholder="5"/>
-                    </div>
-                </form>
+                <div className='captureForm'>
+                    <h2>Capturing {capitalize(props.name)}:</h2>
+                    <form onChange={handleChange}>
+                        <div>
+                            <label htmlFor="nickname">Nickname</label>
+                            <input 
+                                id="nickname" 
+                                type="text"
+                                placeholder={'(optional)'}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="date">Today's Date</label>
+                            <input 
+                                id="date" 
+                                value={getDate()} 
+                                disabled
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="level">Level when captured</label>
+                            <input 
+                                id="level" 
+                                type="number" min="1" max="100" 
+                                placeholder={'(required)'}
+                            />
+                        </div>
+                    </form>
+                </div>
                 <button 
                     onClick={handleSubmit}
                     className="captureOpenButton"
