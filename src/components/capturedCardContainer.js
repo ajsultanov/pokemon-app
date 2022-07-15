@@ -1,8 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import CapturedCard from './CapturedCard.js'
 
-const CapturedCardContainer = (props) => {
-    // console.log(props)
+const CapturedCardContainer = () => {
     const [capturedPokemon, setCapturedPokemon] = useState([])
     const [pokemon, setPokemon] = useState([])
     const url = 'https://pokeapi.co/api/v2/pokemon/'
@@ -10,7 +9,12 @@ const CapturedCardContainer = (props) => {
     useEffect(() => {
         capturedPokemon.map(poke => {
             fetch(url + poke.id.toString())
-                .then(resp => resp.json())
+                .then(resp => {
+                    if (!resp.ok) {
+                        throw new Error(`HTTP error: ${resp.status}`)
+                    }
+                    return resp.json()
+                })
                 .then(poke => {
                     setPokemon(pokemon => [...pokemon, poke])
                 })

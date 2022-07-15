@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const pokédexLogo =  require('../assets/Pokédex_logo.png')
 const pokeball =  require('../assets/pokeball.png')
 
-const Header = (props) => {
+const Header = () => {
 
     return (
         <div className="Header">

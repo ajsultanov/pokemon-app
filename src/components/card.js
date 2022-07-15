@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { leadZeros, capitalize, typeNames, typeColor, baseColor } from "../utils.js";
 
 const Card = (props) => {
-    // console.log(props)
 
     return (
         <Link
-            to={"pokemon/" + props.id} 
+            to={"/pokemon/" + props.id} 
             className="cardLink"
             state={{ color: typeColor(props), types: typeNames(props) }}
         >

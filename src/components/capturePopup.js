@@ -19,7 +19,7 @@ const CapturePopup = (props) => {
                 captureDate: captureDate,
                 captureLevel: captureLevel
             }))
-            window?.location.reload()
+            window.location.reload()
         }
     }
 

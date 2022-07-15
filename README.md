@@ -25,7 +25,7 @@ Press <kbd>ctrl</kbd> + <kbd>c</kbd> to stop the server.
 - <input type="checkbox" checked> Header </input>
 - <input type="checkbox" checked> CardContainer </input>
     - <input type="checkbox" checked> Grid </input>
-    - <input type="checkbox" > Infinite Scroll </input>
+    - <input type="checkbox" checked> Infinite Scroll </input>
 - <input type="checkbox" checked> Cards </input>
     - <input type="checkbox" checked> Name & picture </input>
     - <input type="checkbox" checked> Types </input>
@@ -38,9 +38,12 @@ Press <kbd>ctrl</kbd> + <kbd>c</kbd> to stop the server.
     - <input type="checkbox" checked> Set LocalStorage </input>
 - <input type="checkbox" checked> CapturedCardContainer </input>
     - <input type="checkbox" checked> Get LocalStorage </input>
-- <input type="checkbox" > CapturedCards </input>
+- <input type="checkbox" checked> CapturedCards </input>
 
 ### Other
 - <input type="checkbox" checked> Style </input>
+- <input type="checkbox" > Fetch Bug </input>
+- <input type="checkbox" > Mobile </input>
 - <input type="checkbox" > DRY </input>
 - <input type="checkbox" > Tests </input>
+- <input type="checkbox" > Loading </input>

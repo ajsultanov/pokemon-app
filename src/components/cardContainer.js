@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card.js';
 
-const CardContainer = (props) => {
+const CardContainer = () => {
     const [pokemon, setPokemon] = useState([])
     const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset='
     let offset = 0
 
     useEffect(() => {
         loadPokemon(offset)
-    }, [])
+    }, [offset])
 
     const loadPokemon = (offset) => {
         fetch(url + offset.toString())
@@ -20,9 +20,9 @@ const CardContainer = (props) => {
                         return Promise.all(resp.map(x => x.json()))
                     })
                     .then(data => {
-                            data.forEach(poke => {
-                                setPokemon(pokemon => [...pokemon, poke])
-                            })
+                        data.forEach(poke => {
+                            setPokemon(pokemon => [...pokemon, poke])
+                        })
                     })
             })
     }
@@ -35,17 +35,14 @@ const CardContainer = (props) => {
         } = document.documentElement;
         let timer = false
 
-        if (scrollTop + clientHeight >= scrollHeight
-            && offset + 20 < 1154
-            && !timer) {
+        if (scrollTop + clientHeight >= (scrollHeight - 100)
+            && scrollTop !== 0
+            && window.location !== 'http://localhost:3000/captured'
+            && offset <= 1140) {
                 offset += 20
                 loadPokemon(offset)
-                timer = true
-                setTimeout(() => {
-                    timer = false
-                }, 1000)
             }
-    })
+    }, { passive: true });
 
     return (
         <div className="CardContainer">

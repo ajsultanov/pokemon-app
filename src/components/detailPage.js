@@ -14,7 +14,12 @@ const DetailPage = () => {
 
     useEffect(() => {
         fetch(url + id)
-            .then(resp => resp.json())
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error(`HTTP error: ${resp.status}`)
+                }
+                return resp.json()
+            })
             .then(json => setPokemon(json))
     }, [id])
 
