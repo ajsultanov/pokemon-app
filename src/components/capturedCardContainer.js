@@ -25,7 +25,6 @@ const CapturedCardContainer = () => {
                     setPokemon(pokemon => [...pokemon, poke])
                 })
         })
-        return () => {}
     }, [capturedPokemon])
 
     const anyCaptured = () => {

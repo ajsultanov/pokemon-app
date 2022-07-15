@@ -14,7 +14,6 @@ const CardContainer = () => {
         fetch(url + offset.toString())
             .then(resp => resp.json())
             .then(json => {
-                // console.log(json.results)
                 return Promise.all(json.results.map(item => fetch(item.url)))
                     .then(resp => {
                         return Promise.all(resp.map(x => x.json()))

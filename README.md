@@ -42,9 +42,9 @@ Press <kbd>ctrl</kbd> + <kbd>c</kbd> to stop the server.
 
 ### Other
 - [x] Styling
-- [] Fetch Bug
-- [] CapturedCard Page Bug
-- [] Mobile
-- [] DRY
-- [] Tests
-- [] Loading Placeholder
+- [ ] Fetch Bug
+- [ ] CapturedCard Page Bug
+- [ ] Mobile
+- [ ] DRY
+- [ ] Tests
+- [ ] Loading Placeholder
