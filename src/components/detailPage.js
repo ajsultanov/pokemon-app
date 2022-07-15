@@ -4,6 +4,7 @@ import { leadZeros, capitalize, baseColor } from "../utils.js";
 import CapturePopup from './CapturePopup.js';
 
 
+
 const DetailPage = () => {
     const location = useLocation()
     const { color, types } = location.state
@@ -11,6 +12,11 @@ const DetailPage = () => {
     const [pokemon, setPokemon] = useState(null);
     const [captureDetails, setCaptureDetails] = useState(null)
     const url = 'https://pokeapi.co/api/v2/pokemon/'
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     useEffect(() => {
         fetch(url + id)
@@ -36,9 +42,9 @@ const DetailPage = () => {
     }
 
     return (
-        <div className="DetailPage">
+        <div id="DetailPage">
             <div 
-                className="detailHeader" 
+                id="detailHeader" 
                 style={{
                     backgroundColor: baseColor(types[0]), 
                     background: 'repeating-linear-gradient(125deg,' + color + ', ' + color  + ' 10px, ' + color  + 'd0 10px, ' + color  + 'd0 20px)',

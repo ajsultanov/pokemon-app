@@ -1,10 +1,16 @@
 import React, { useState, useEffect }  from 'react';
+import { useLocation } from "react-router-dom";
 import CapturedCard from './CapturedCard.js'
 
 const CapturedCardContainer = () => {
     const [capturedPokemon, setCapturedPokemon] = useState([])
     const [pokemon, setPokemon] = useState([])
     const url = 'https://pokeapi.co/api/v2/pokemon/'
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     useEffect(() => {
         capturedPokemon.map(poke => {
@@ -20,28 +26,28 @@ const CapturedCardContainer = () => {
                 })
         })
         return () => {}
-    }, [])
+    }, [capturedPokemon])
 
     const anyCaptured = () => {
-        if (localStorage.length !== 0 && capturedPokemon.length === 0) {
+        if (capturedPokemon.length !== 0) {
+            return true
+        } else if (localStorage.length !== 0 && !capturedPokemon.length) {
             for (let i = 0; i < localStorage.length; i++) {
                 let value = JSON.parse(localStorage.getItem(localStorage.key(i)))
                 value.id = localStorage.key(i)
                 setCapturedPokemon(pokemon => [...pokemon, value])
             }
             return true
-        } else if (capturedPokemon.length !== 0) {
-            return true
-        }
+        } 
         return false
     }
 
     return (
-        <div className='CapturedCardContainer'>
+        <div id='CapturedCardContainer'>
             {anyCaptured() ? 
                 <div>
                     <div>
-                        <div className='capturedListHeader'>
+                        <div id='capturedListHeader'>
                             <div className='capturedInfoCell'>
                                 <span>POKEMON</span>
                             </div>
@@ -57,7 +63,6 @@ const CapturedCardContainer = () => {
                         </div>
                         <div>
                             {capturedPokemon.map(mon => {
-                                console.log(mon, pokemon[mon.id])
                                 return <CapturedCard 
                                     key={mon.id} 
                                     nickname={mon.nickname}

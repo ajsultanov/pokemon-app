@@ -2,9 +2,9 @@
 
 ## Running the App
 
-To start the app, type `npm start` in the terminal.
+Fork or clone this repo. Then to start the app, type `npm start` in the terminal. Make sure you are in the project directory. You may need to run `npm install` first to make sure you have the correct packages installed.
 
-This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser (this should open automatically).
 
 Press <kbd>ctrl</kbd> + <kbd>c</kbd> to stop the server.
 
@@ -22,28 +22,29 @@ Press <kbd>ctrl</kbd> + <kbd>c</kbd> to stop the server.
 
 ### Components
 
-- <input type="checkbox" checked> Header </input>
-- <input type="checkbox" checked> CardContainer </input>
-    - <input type="checkbox" checked> Grid </input>
-    - <input type="checkbox" checked> Infinite Scroll </input>
-- <input type="checkbox" checked> Cards </input>
-    - <input type="checkbox" checked> Name & picture </input>
-    - <input type="checkbox" checked> Types </input>
-- <input type="checkbox" checked> DetailPage </input>
-    - <input type="checkbox" checked> Sections </input>
-    - <input type="checkbox" checked> Show detail info </input>
-    - <input type="checkbox" checked> Get LocalStorage / Render Capture button </input>
-- <input type="checkbox" checked> CapturePopup </input>
-    - <input type="checkbox" checked> Inputs </input>
-    - <input type="checkbox" checked> Set LocalStorage </input>
-- <input type="checkbox" checked> CapturedCardContainer </input>
-    - <input type="checkbox" checked> Get LocalStorage </input>
-- <input type="checkbox" checked> CapturedCards </input>
+- [x] Header
+- [x] CardContainer
+    - [x] Grid
+    - [x] Infinite Scroll
+- [x] Cards
+    - [x] Name & picture
+    - [x] Types
+- [x] DetailPage
+    - [x] Sections
+    - [x] Show detail info
+    - [x] Get LocalStorage / Render Capture button
+- [x] CapturePopup
+    - [x] Inputs
+    - [x] Set LocalStorage
+- [x] CapturedCardContainer
+    - [x] Get LocalStorage
+- [x] CapturedCards
 
 ### Other
-- <input type="checkbox" checked> Style </input>
-- <input type="checkbox" > Fetch Bug </input>
-- <input type="checkbox" > Mobile </input>
-- <input type="checkbox" > DRY </input>
-- <input type="checkbox" > Tests </input>
-- <input type="checkbox" > Loading </input>
+- [x] Styling
+- [] Fetch Bug
+- [] CapturedCard Page Bug
+- [] Mobile
+- [] DRY
+- [] Tests
+- [] Loading Placeholder

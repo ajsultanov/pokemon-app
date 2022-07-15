@@ -14,7 +14,7 @@ const CardContainer = () => {
         fetch(url + offset.toString())
             .then(resp => resp.json())
             .then(json => {
-                console.log(json.results)
+                // console.log(json.results)
                 return Promise.all(json.results.map(item => fetch(item.url)))
                     .then(resp => {
                         return Promise.all(resp.map(x => x.json()))
@@ -33,7 +33,6 @@ const CardContainer = () => {
             scrollHeight,
             clientHeight
         } = document.documentElement;
-        let timer = false
 
         if (scrollTop + clientHeight >= (scrollHeight - 100)
             && scrollTop !== 0
@@ -45,7 +44,7 @@ const CardContainer = () => {
     }, { passive: true });
 
     return (
-        <div className="CardContainer">
+        <div id="CardContainer">
             {
                 pokemon.map(mon => {
                     // console.log(pokemon.length)

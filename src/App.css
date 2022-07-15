@@ -1,5 +1,5 @@
 html, body {
-  background-color: #e8e8e8;
+  background-color: #fafafa;
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
   height: 100%;
   width: 100%;
@@ -25,13 +25,13 @@ h4 {
   font-size: 1rem;
 }
 
-.App {
+#App {
   text-align: center;
   height: 100%;
   width: 100%;
 }
 
-.Header {
+#Header {
   margin: 5px;
   padding: 15px;
   display: flex;
@@ -40,39 +40,41 @@ h4 {
   justify-content: space-between;
 }
 
-.capturedLink {
+#capturedLink {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 5px 15px 5px 5px;
-  background-color: orangered;
+  background-color: #eb5435;
   border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   color: white;
+  text-shadow: 0px 0px 10px #ffcc33aa;
 }
 
-.pokedexLogo {
+#pokedexLogo {
   max-height: 6rem;
 }
 
-.pokeballLogo {
+#pokeballLogo {
   max-height: 2rem;
   margin-right: 10px;
 }
 
-.CardContainer {
+#CardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-auto-rows: 1fr;
 }
 
 .Card {
-  background-color: white;
+  max-height: 260px;
+  background-color: #fafafa;
   border-radius: 10px;
   margin: 10px;
   padding-bottom: 5px;
-  box-shadow: 0px 2px 15px 2px #c4c4c4;
+  box-shadow: 0px 2px 15px 2px #e0e0e0;
 }
 
 .cardLink {
@@ -94,19 +96,17 @@ h4 {
 
 .portrait {
   margin: 15px;
-  /* box-shadow: 0px 0px 5px 5px #fff4;
-  border-radius: 50%; */
 }
 
-.DetailPage {
+#DetailPage {
   border-radius: 10px;
   margin: 15px;
   background-color: #f0f0f0;
   padding-bottom: 15px;
-  box-shadow: 0px 2px 15px 2px #d5d5d5;
+  box-shadow: 0px 2px 15px 2px #e0e0e0;
 }
 
-.detailHeader {
+#detailHeader {
   border-radius: 10px 10px 0px 0px;
   padding: 10px;
   color: white;
@@ -114,7 +114,7 @@ h4 {
 
 .aboutSection {
   border-radius: 5px;
-  background-color: white;
+  background-color: #fafafa;
   margin: 15px;
   padding: 5px;
 }
@@ -122,36 +122,25 @@ h4 {
   text-decoration: underline;
 }
 
-.captureButton {
-  background-color: orange;
-  border-radius: 5px;
-  padding: 5px 35px;
-  font-weight: bold;
-  text-shadow: 0px -1px 1px red, 0px 1px 1px yellow;
-  border-color: orangered;
-}
-
-.CapturePopup {
-  background-color: red;
-}
-
 .captureOpenButton {
-  background-color: orangered;
+  background-color: #eb5435;
   width: 50%;
   padding: 10px 5px;
   color: white;
   font-size: 1.25rem;
   font-weight: bold;
   border-radius: 25px;
+  border-color: lightsalmon;
+  text-shadow: 1px 1px 2px #ba5544;
 }
 
-.captureForm {
+#captureForm {
   width: 90%;
 }
-.captureForm h2 {
+#captureForm h2 {
   text-align: center;
 }
-.captureForm div {
+#captureForm div {
   width: 100%;
   margin: 10px 0px;
 }
@@ -163,7 +152,7 @@ h4 {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #000;
   opacity: 0;
   display: flex;
   justify-content: center;
@@ -199,13 +188,14 @@ h4 {
   color: #333;
 }
 .content-after {
-  width: 30%;
-  height: 40%;
-  background-color: #f0f0f0;
+  min-width: 30%;
+  min-height: 40%;
+  background-color: #fafafa;
   border-radius: 20px;
+  padding: 10px;
 }
 
-.CapturedCardContainer {
+#CapturedCardContainer {
   background-color: #f0f0f0;
   width: 100%;
   display: flex;
@@ -213,11 +203,11 @@ h4 {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0px 2px 15px 2px #c4c4c4;
+  box-shadow: 0px 2px 15px 2px #e0e0e0;
 }
 
-.capturedListHeader {
-  background: #d5d5d5;
+#capturedListHeader {
+  background: #e0e0e0;
   display: flex;
   flex-direction: row;
   margin: 10px;
@@ -225,7 +215,7 @@ h4 {
   border-radius: 10px;
   font-weight: bold;
 }
-.capturedListHeader div {
+#capturedListHeader div {
   width: 22%;
   text-align: left;
 }
@@ -234,7 +224,10 @@ div.capturedInfoCell {
 }
 span.capturedLevelCell, 
 div.capturedLevelCell {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .CapturedCard {

@@ -8,7 +8,7 @@ import DetailPage from './components/DetailPage'
 function App() {
 
   return (
-    <div className="App">
+    <div id="App">
       <Header />
       <Routes>
         <Route path="/" element={<CardContainer />} />

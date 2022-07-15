@@ -44,6 +44,7 @@ export const typeColor = props => {
             case 'psychic':
                 return '#f6acca';
             case 'ghost':
+            case 'dragon':
                 return '#ababd9';
             default:
                 return '#cccccc';

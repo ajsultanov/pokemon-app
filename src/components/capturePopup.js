@@ -45,7 +45,6 @@ const CapturePopup = (props) => {
                 Capture
             </button>
             <Modal 
-                // className='CapturePopup'
                 isOpen={modalOpen}
                 onRequestClose={() => setModalOpen(false)}
                 overlayClassName={{
@@ -60,7 +59,7 @@ const CapturePopup = (props) => {
                 }}
                 closeTimeoutMS={100}
             >
-                <div className='captureForm'>
+                <div id='captureForm'>
                     <h2>Capturing {capitalize(props.name)}:</h2>
                     <form onChange={handleChange}>
                         <div>
