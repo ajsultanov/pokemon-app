@@ -7,29 +7,51 @@ const CardContainer = (props) => {
     let offset = 0
 
     useEffect(() => {
+        loadPokemon(offset)
+    }, [])
+
+    const loadPokemon = (offset) => {
         fetch(url + offset.toString())
             .then(resp => resp.json())
             .then(json => {
-                console.log(json)
+                console.log(json.results)
                 return Promise.all(json.results.map(item => fetch(item.url)))
+                    .then(resp => {
+                        return Promise.all(resp.map(x => x.json()))
+                    })
+                    .then(data => {
+                            data.forEach(poke => {
+                                setPokemon(pokemon => [...pokemon, poke])
+                            })
+                    })
             })
-            .then(resp => {
-                return Promise.all(resp.map(x => x.json()))
-            })
-            .then(data => {
-                data.forEach(poke => {
-                    setPokemon(pokemon => [...pokemon, poke])
-                })
-            })
+    }
 
-        return () => {}
-    }, [offset])
-    
+    window.addEventListener('scroll', () => {
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+        let timer = false
+
+        if (scrollTop + clientHeight >= scrollHeight
+            && offset + 20 < 1154
+            && !timer) {
+                offset += 20
+                loadPokemon(offset)
+                timer = true
+                setTimeout(() => {
+                    timer = false
+                }, 1000)
+            }
+    })
+
     return (
         <div className="CardContainer">
             {
                 pokemon.map(mon => {
-                    console.log(pokemon.length)
+                    // console.log(pokemon.length)
                     return <Card 
                         key={mon.id} 
                         {...mon}
