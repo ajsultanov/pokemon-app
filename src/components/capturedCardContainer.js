@@ -36,16 +36,22 @@ const CapturedCardContainer = (props) => {
         <div className='CapturedCardContainer'>
             {anyCaptured() ? 
                 <div>
-                    <table>
-                        <thead className='capturedListHeader'>
-                            <tr>
-                                <th scope="col" >POKEMON</th>
-                                <th scope="col">NICKNAME</th>
-                                <th scope="col">CAPTURED AT</th>
-                                <th scope="col" className='capturedLevelCell'>CAPTURED LEVEL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div>
+                        <div className='capturedListHeader'>
+                            <div className='capturedInfoCell'>
+                                <span>POKEMON</span>
+                            </div>
+                            <div>
+                                <span>NICKNAME</span>
+                            </div>
+                            <div>
+                                <span>CAPTURED AT</span>
+                            </div>
+                            <div>
+                                <span className='capturedLevelCell'>CAPTURED LEVEL</span>
+                            </div>
+                        </div>
+                        <div>
                             {capturedPokemon.map(mon => {
                                 console.log(mon, pokemon[mon.id])
                                 return <CapturedCard 
@@ -56,8 +62,8 @@ const CapturedCardContainer = (props) => {
                                     {...pokemon[mon.id]}
                                 />
                             })}
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                 </div>
             :
                 <h1>No Pokemon captured yet!</h1>

@@ -5,8 +5,8 @@ const CapturedCard = (props) => {
     console.log(props)
 
     return (
-        <tr className="CapturedCard">
-            <td className='capturedPortraitCell'>
+        <div className="CapturedCard">
+            <div className='capturedPortraitCell'>
                 <div
                     className='capturedImgContainer'
                     style={{
@@ -24,17 +24,21 @@ const CapturedCard = (props) => {
                     <h3>{'#' + leadZeros(props.order)} {capitalize(props.name)}</h3>
                     <div className='types'>{typeNames(props) ? typeNames(props).join(' • ') : undefined}</div>
                 </div>
-            </td>
-            <td>
-                {props.nickname}
-            </td>
-            <td>
+            </div>
+            <div>
+                {props.nickname?
+                    props.nickname
+                :
+                    <i style={{color: '#666666'}}>none</i>
+                }
+            </div>
+            <div>
                 {props.captureDate}
-            </td>
-            <td className='capturedLevelCell'>
+            </div>
+            <div className='capturedLevelCell'>
                 {props.captureLevel}
-            </td>
-        </tr>
+            </div>
+        </div>
     )
 }
 

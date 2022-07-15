@@ -208,55 +208,74 @@ h4 {
 .CapturedCardContainer {
   background-color: #f0f0f0;
   width: 100%;
-}
-table {
-  border-collapse: collapse;
-  table-layout: auto;
+  display: flex;
+  flex-direction: column;
   margin: 10px;
-}
-
-table * {
-  text-align: left;
-  margin: 10px;
-}
-
-thead {
-  background-color: #cccccc;
-}
-
-th {
   padding: 10px;
-  /* border-radius: 10px; */
+  border-radius: 10px;
+  box-shadow: 0px 2px 15px 2px #c4c4c4;
 }
 
-tbody tr:nth-child(even) {
-  background: #e8e8e8;
+.capturedListHeader {
+  background: #d5d5d5;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.capturedListHeader div {
+  width: 22%;
+  text-align: left;
+}
+div.capturedInfoCell {
+  width: 33%;
+}
+span.capturedLevelCell, 
+div.capturedLevelCell {
+  text-align: center;
 }
 
-td {
-  min-width: 180px;
+.CapturedCard {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  padding: 5px;
+}
+.CapturedCard div {
+  width: 22%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
-.capturedPortraitCell {
+div.capturedPortraitCell {
+  width: 33%;
+  justify-self: flex-start;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.capturedPortraitInfo {
-  margin: 0px;
-}
-
 .capturedImgContainer {
-  max-width: 20%;
-  text-align: center;
   padding: 5px;
 }
-.capturedImgContainer img{
-  margin: 0px;
+.capturedPortraitInfo {
+  margin: 10px;
+  padding: 10px;
+  flex-basis: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.capturedLevelCell {
-  text-align: center;
+.capturedPortraitInfo div,
+.capturedPortraitInfo h3 {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 
